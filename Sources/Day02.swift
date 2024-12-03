@@ -7,17 +7,18 @@
 
 import Algorithms
 
-enum State {
-  case increasing
-  case decreasing
-  case same
-}
-
-enum Day02Error: Error {
-  case unsafe
-}
-
 struct Day02: AdventDay {
+
+  enum State {
+    case increasing
+    case decreasing
+    case same
+  }
+
+  enum CustomError: Error {
+    case unsafe
+  }
+
   // Save your data in a corresponding text file in the `Data` directory.
   var data: String
 
@@ -104,7 +105,7 @@ struct Day02: AdventDay {
     return true
   }
 
-  func isSafe(levels: [Int]) throws(Day02Error) {
+  func isSafe(levels: [Int]) throws(CustomError) {
     var lastKnownState: State?
 
     for (currentIndex, currentLevel) in levels.enumerated() {
